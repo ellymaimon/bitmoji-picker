@@ -5,19 +5,21 @@ import faunadb from 'faunadb';
 function App() {
   const [bitmojiURL, setBitmojiURL] = useState(null);
 
-  const saveToDB = () => {
+  const saveToDB = async () => {
     if ( !bitmojiURL ) {
       return;
     }
     const database = new faunadb.Client({ secret: process.env.REACT_APP_DB_KEY });
     const q = faunadb.query;
 
-    database.query(
+    await database.query(
       q.Create(
         q.Collection('bitmojis'),
         { data: { url: bitmojiURL } },
       )
-    )
+    );
+
+    setBitmojiURL(null);
   }
 
   return (
