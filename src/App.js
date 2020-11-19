@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import BitmojiButton from './BitmojiPicker';
+import BitmojiPicker from './BitmojiPicker';
 import faunadb from 'faunadb';
 
 function App() {
@@ -24,7 +24,7 @@ function App() {
 
   return (
     <div className='container'>
-      <BitmojiButton setBitmojiURL={setBitmojiURL} />
+      <BitmojiPicker setBitmojiURL={setBitmojiURL} />
       <button
         onClick={saveToDB}
         disabled={!bitmojiURL}
